@@ -14,7 +14,7 @@ h1 {
 
 nav {
   width: 80%;
-  max-width: 500px;
+  max-width: 600px;
   display: flex;
   justify-content: center;
 }
@@ -68,4 +68,9 @@ button:hover {
 
 .second {
   margin: 0 10%;
+}
+
+.book-api {
+  color: green;
+  font-weight: bold;
 }

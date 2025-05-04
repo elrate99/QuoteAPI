@@ -79,6 +79,34 @@ const quotes = [
   },
 ];
 
+const books = [
+  {
+    id: 1,
+    book: 'The Great Gatsby',
+    author: 'Scott Fitzgerald',
+    date: '1925-05-04T12:34:56Z'
+  },
+  {
+    id: 2,
+    book: 'Ulysses',
+    author: 'James Joyce',
+    date: '1922-05-04T12:34:56Z'
+  },
+  {
+    id: 3,
+    book: `In Search of Lost Time`,
+    author: 'Marcel Proust',
+    date: '1913-05-04T12:34:56Z'
+  },
+  {
+    id: 4,
+    book: 'One Hundred Years of Solitude',
+    author: 'Gabriel García Márquez',
+    date: '1967-05-04T12:34:56Z'
+  }
+]
+
 module.exports = {
-  quotes
+  quotes,
+  books
 };
