@@ -1,6 +1,7 @@
 const fetchAllButton = document.getElementById('fetch-quotes');
 const fetchRandomButton = document.getElementById('fetch-random');
 const fetchByAuthorButton = document.getElementById('fetch-by-author');
+const fetchByIdButton = document.getElementById('fetch-by-id');
 
 const quoteContainer = document.getElementById('quote-container');
 const quoteText = document.querySelector('.quote');
@@ -23,13 +24,35 @@ const renderQuotes = (quotes = []) => {
       const newQuote = document.createElement('div');
       newQuote.className = 'single-quote';
       newQuote.innerHTML = `<div class="quote-text">${quote.quote}</div>
-      <div class="attribution">- ${quote.person}</div>`;
+      <div class="attribution">- ${quote.person}</div>
+      <div class="attribution">- ${quote.id}</div>
+      <div class="date">Added on: ${new Date(quote.date).toLocaleDateString()}</div>`;
       quoteContainer.appendChild(newQuote);
     });
   } else {
     quoteContainer.innerHTML = '<p>Your request returned no quotes.</p>';
   }
 }
+
+fetchByIdButton.addEventListener('click', () => {
+  const id = document.getElementById('author').value;
+  if (!id) {
+    // id пустой → показываем ошибку
+    quoteContainer.innerHTML = '<p>Please enter an ID before searching.</p>';
+    return;
+  }
+  fetch(`/api/quotes/${id}`)
+  .then(response => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      renderError(response);
+    }
+  })
+  .then(response => {
+    renderQuotes(response.quotes);
+  })
+})
 
 fetchAllButton.addEventListener('click', () => {
   fetch('/api/quotes')
